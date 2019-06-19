@@ -119,7 +119,7 @@ void game_init() {
 
 void game_begin() {
     // Load sound
-    song = al_load_sample( "resources/sounds/hello.wav" );
+    song = al_load_sample( "res/sounds/hello.wav" );
     if (!song){
         printf( "Audio clip sample not loaded!\n" );
         show_err_msg(-6);
@@ -128,7 +128,7 @@ void game_begin() {
     al_play_sample(song, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_LOOP,NULL);
     al_clear_to_color(al_map_rgb(100,100,100));
     // Load and draw text
-    font = al_load_ttf_font("resources/fonts/pirulen.ttf",12,0);
+    font = al_load_ttf_font("res/fonts/pirulen.ttf",12,0);
     al_draw_text(font, al_map_rgb(255,255,255), WIDTH/2, HEIGHT/2+220 , ALLEGRO_ALIGN_CENTRE, "Press 'Enter' to start");
     al_draw_rectangle(WIDTH/2-150, 510, WIDTH/2+150, 550, al_map_rgb(255, 255, 255), 0);
     al_flip_display();
@@ -202,10 +202,10 @@ int game_run() {
                 character1.y = HEIGHT / 2 + 150;
                 character2.x = WIDTH + 100;
                 character2.y = HEIGHT / 2 - 280;
-                character1.image_path = al_load_bitmap("resources/images/tower.png");
-                character2.image_path = al_load_bitmap("resources/images/teemo_left.png");
-                character3.image_path = al_load_bitmap("resources/images/teemo_right.png");
-                background = al_load_bitmap("resources/images/stage.jpg");
+                character1.image_path = al_load_bitmap("res/images/tower.png");
+                character2.image_path = al_load_bitmap("res/images/teemo_left.png");
+                character3.image_path = al_load_bitmap("res/images/teemo_right.png");
+                background = al_load_bitmap("res/images/stage.jpg");
 
                 //Initialize Timer
                 timer  = al_create_timer(1.0/15.0);
