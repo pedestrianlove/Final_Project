@@ -1,5 +1,5 @@
 #include "flow.h"
-#include "internal_error.h"
+#include "internal-error.h"
 
 handle* Handle_init ()
 {
@@ -87,7 +87,6 @@ void game_destroy (handle* GAME)
 	al_destroy_timer(GAME -> TIMER2);
 	al_destroy_bitmap(GAME -> IMAGE);
 	al_destroy_sample(GAME -> SONG);
-
 }
 
 void exception (int val, char* str, handle* GAME)
