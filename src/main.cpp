@@ -1,12 +1,13 @@
-#include <stdio.h>
-#include <allegro5/allegro.h>
-#include "internal_music.h"
+#include "flow.h"
 
 int main (int argc, char **argv)
 {
-	HELLO ();
+	init_handle* GAME = (init_handle*) malloc (sizeof(init_handle));
+	game_init (GAME);
 
+	game_begin (GAME);
 
+	game_destroy ();
 
 	return 0;
 }
