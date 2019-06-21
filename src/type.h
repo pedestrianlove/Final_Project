@@ -30,7 +30,7 @@ typedef struct handle {
 	int FPS;
 	int WIDTH, HEIGHT;
 
-	ball reddie;	
+	ball Reddie;	
 
 	ALLEGRO_BITMAP* IMAGE;
 	ALLEGRO_BITMAP* IMAGE2;

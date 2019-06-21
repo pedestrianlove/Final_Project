@@ -3,7 +3,9 @@
 #include "type.h"
 
 // internal
-
+void init_audio (handle*);
+void init_display (handle*);
+void init_keyboard (handle*);
 
 
 // interface

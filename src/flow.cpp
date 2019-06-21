@@ -3,34 +3,45 @@
 
 void game_init(handle* GAME) {
 	exception (al_init(), 
-			"Initialization failed.", GAME);
+			"System initialization failed.", GAME);
+	init_audio (GAME);
+	init_display (GAME); 
+
+       	al_init_image_addon();
+    	al_init_font_addon();
+    	al_init_ttf_addon();
+
+    	// Register event
+}
+void init_audio (handle* GAME)
+{
 	exception (al_install_audio(), 
 			"Failed to initialize audio!", GAME);
 	exception (al_init_acodec_addon(), 
 			"Failed to initialize audio codecs!", GAME);
 	exception (al_reserve_samples(1), 
 			"Failed to reserve samples!", GAME);
-    	
+	al_install_audio();
+    	al_init_acodec_addon();
+}
+void init_display (handle* GAME)
+{
 	// Create display
     	GAME -> DISPLAY = al_create_display(GAME->WIDTH, GAME->HEIGHT);
     	GAME -> EVENT_QUEUE = al_create_event_queue();
     	exception (GAME->DISPLAY != NULL && GAME->EVENT_QUEUE != NULL, 
-			"Failed to initialize the display!", GAME);  
-
+			"Failed to initialize the display!", GAME); 
     	al_set_window_position(GAME->DISPLAY, 0, 0);
     	al_set_window_title(GAME->DISPLAY, GAME->TITLE);
+	al_register_event_source(GAME->EVENT_QUEUE, al_get_display_event_source(GAME->DISPLAY));
+}
+void init_keyboard (handle* GAME)
+{
     	al_init_primitives_addon();
     	al_install_keyboard();
-    	al_install_audio();
-    	al_init_image_addon();
-    	al_init_acodec_addon();
-    	al_init_font_addon();
-    	al_init_ttf_addon();
-
-    	// Register event
-	al_register_event_source(GAME->EVENT_QUEUE, al_get_display_event_source(GAME->DISPLAY));
 	al_register_event_source(GAME->EVENT_QUEUE, al_get_keyboard_event_source());
 }
+
 
 
 void game_begin(handle* GAME) {
@@ -54,7 +65,8 @@ void game_begin(handle* GAME) {
 }
 
 
-int game_run() {
+
+int game_run(handle* GAME) {
     	int error = 0;
     	// First window(Menu)
 	if(window == 1){
@@ -106,8 +118,8 @@ int game_run() {
 }
 
 
-void game_destroy (handle* GAME)
-{
+
+void game_destroy (handle* GAME) {
 	// Make sure you destroy all things
 	al_destroy_event_queue (GAME -> EVENT_QUEUE);
 	al_destroy_display (GAME -> DISPLAY);
@@ -120,8 +132,9 @@ void game_destroy (handle* GAME)
 	free (GAME);
 }
 
-void exception (int val, char* str, handle* GAME)
-{
+
+
+void exception (int val, char* str, handle* GAME) {
 	if (!val) {
 		show_err_msg("Initialization failed.");
 		game_destroy (GAME);
