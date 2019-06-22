@@ -1,5 +1,6 @@
 #include "flow.h"
 #include "internal-event.h"
+#include "internal-init.h"
 #include "internal-load.h"
 
 
@@ -14,6 +15,7 @@ void game_init(handle* GAME) {
     	al_init_font_addon();
     	al_init_ttf_addon();
 
+    	// Register event
 }
 
 
@@ -29,17 +31,28 @@ int game_run(handle* GAME) {
     	int error = 0;
     	// First window(Menu)
 	if(window == 1){
-		title_page (GAME->EVENT_QUEUE, &(GAME->WINDOW));	
+		first_window (GAME->EVENT_QUEUE, &(GAME->WINDOW));	
     	}
     	// Second window(Main Game)
     	else if(window == 2){
-		game_page ();
-	}
+        	// Change Image for animation
+        	al_draw_bitmap(background, 0,0, 0);
+        	if(ture) al_draw_bitmap(character1.image_path, character1.x, character1.y, 0);
+
+        	if(dir) al_draw_bitmap(character2.image_path, character2.x, character2.y, 0);
+        	else al_draw_bitmap(character3.image_path, character2.x, character2.y, 0);
+
+        	al_flip_display();
+        	al_clear_to_color(al_map_rgb(0,0,0));
+
+        	// Listening for new event
+        	if (!al_is_event_queue_empty(event_queue)) {
+        		error = process_event();
+        	}
+    	}
     	return error;
 }
-void title_page (ALLEGRO_TIMER* TIMER[3], 
-		ALLEGRO_EVENT_QUEUE* EVENT_QUEUE, 
-		object* Reddie, int* WINDOW)
+void first_window (ALLEGRO_EVENT_QUEUE* EVENT_QUEUE, int* WINDOW)
 {
 	if (!al_is_event_queue_empty(EVENT_QUEUE)) {
             	error = process_event(EVENT_QUEUE);
@@ -49,34 +62,17 @@ void title_page (ALLEGRO_TIMER* TIMER[3],
 			// Setting Character
 			
 			point position_ball = {WIDTH/2, HEIGHT/2 + 150};
-			Reddie = init_object (3, position_ball, "res/images/red_ball.jpg");
+			object* Reddie = init_object (3, position_ball, "res/images/red_ball.jpg");
 			
 			point position_object = {WIDTH+100, HEIGHT/2 - 280};
-			Enemy = init_object (-1, position_object, "res/images/teemo_left.png");                	
+			object* enemy = init_object (-1, position_object, "res/images/teemo_left.png");                	
 
 			//Initialize Timer
-                	init_timer (TIMER);            
-		}
+                	init_timer ();            	}
         }
 }
-void game_page (ALLEGRO_EVENT_QUEUE* event_queue, object* Reddie, object* Enemy)
-{
-	// Change Image for animation
-        al_draw_bitmap(Reddie->AVATAR, Reddie->POSITION.x, Reddie->POSITION.y, 0);
 
-        al_draw_bitmap(Enemy->AVATAR, Enemy->POSITION.x, Enemy->POSITION.y, 0);
 
-	reset_to_black ();
-	
-	listen_event_queue (event_queue);
-}
-void listen_event_queue (ALLEGRO_EVENT_QUEUE* event_queue)
-{
-        // Listening for new event
-        if (!al_is_event_queue_empty(event_queue)) {
-        	error = process_event();
-        }
-}
 
 void game_destroy (handle* GAME) {
 	// Make sure you destroy all things

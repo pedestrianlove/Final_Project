@@ -11,7 +11,7 @@
 
 
 // custom types
-
+#include "internal-init.h"
 
 
 
@@ -19,6 +19,10 @@ typedef struct handle {
 	char* TITLE;
 	int FPS;
 	int WIDTH, HEIGHT;
+	int WINDOW;
+	
+	object* Reddie;
+	object* Enemy;
 
 	ALLEGRO_BITMAP* IMAGE;
 	ALLEGRO_BITMAP* IMAGE2;
@@ -32,9 +36,7 @@ typedef struct handle {
 	ALLEGRO_SAMPLE* SONG;
 	ALLEGRO_FONT* FONT;
 	
-	ALLEGRO_TIMER* TIMER;
-	ALLEGRO_TIMER* TIMER2;
-	ALLEGRO_TIMER* TIMER3;
+	ALLEGRO_TIMER* TIMER[3];
 }handle;
 handle* Handle_init ()
 {
@@ -53,9 +55,9 @@ handle* Handle_init ()
 	Handle -> IMAGE3 = NULL;
 	Handle -> BG = NULL;
 
-	Handle -> TIMER = NULL;
-	Handle -> TIMER2 = NULL;
-	Handle -> TIMER3 = NULL;
+	Handle -> TIMER[0] = NULL;
+	Handle -> TIMER[1] = NULL;
+	Handle -> TIMER[2] = NULL;
 
 	Handle -> SONG = NULL;
 	Handle -> FONT = NULL;
@@ -65,6 +67,8 @@ handle* Handle_init ()
 
 
 // internal
+void title_page (ALLEGRO_TIMER* TIMER[3], ALLEGRO_EVENT_QUEUE* EVENT_QUEUE, int* WINDOW);
+
 
 
 // interface

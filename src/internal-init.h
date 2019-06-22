@@ -17,16 +17,17 @@ typedef struct object {
 	point POSITION;
 	int HP;
 }object;
-object* init_object (int hp, point position)
+object* init_object (int hp, point position, char* img_path)
 {
-	object* new = malloc (sizeof(object));
-	new -> HP = hp;
-	new -> POSITION = position;
-
-	return new;
+	object* OBJECT = (object*) malloc (sizeof(object));
+	OBJECT -> HP = hp;
+	OBJECT -> POSITION = position;
+	al_load_bitmap (img_path);
+	return OBJECT;
 }
 
 // internal
+void init_timer (ALLEGRO_TIMER*, ALLEGRO_EVENT_QUEUE*);
 
 
 

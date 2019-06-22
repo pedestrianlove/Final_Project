@@ -43,6 +43,32 @@ void init_keyboard (ALLEGRO_EVENT_QUEUE* EVENT_QUEUE)
 }
 
 
+void init_timer (ALLEGRO_TIMER* timer[3], ALLEGRO_EVENT_QUEUE* event_queue)
+{
+	timer[0]  = al_create_timer(1.0/15.0);
+      	timer[1]  = al_create_timer(1.0);
+        timer[2]  = al_create_timer(1.0/10.0);
+        
+	al_register_event_source(event_queue, al_get_timer_event_source(timer[0])) ;
+        al_register_event_source(event_queue, al_get_timer_event_source(timer[1])) ;
+        al_register_event_source(event_queue, al_get_timer_event_source(timer[2])) ;
+        
+	al_start_timer(timer[0]);
+        al_start_timer(timer[1]);
+       	al_start_timer(timer[2]);
+}
+
+
+// display color reset
+void reset_to_black ()
+{
+	al_flip_display();
+	al_clear_to_color(al_map_rgb(0,0,0));
+}
+
+
+
+
 
 
 
