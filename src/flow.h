@@ -11,17 +11,8 @@
 
 
 // custom types
-typedef struct point {
-	int x;
-	int y;
-}point;
 
 
-typedef struct object {
-	ALLEGRO_BITMAP* AVATAR;
-	point POSITION;
-	int HP;
-}object;
 
 
 typedef struct handle {

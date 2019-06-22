@@ -42,8 +42,13 @@ void init_keyboard (ALLEGRO_EVENT_QUEUE* EVENT_QUEUE)
 	al_register_event_source(EVENT_QUEUE, al_get_keyboard_event_source());
 }
 
+
+
+
+
 void exception (int val, char* str) {
 	if (!val) {
 		show_err_msg(str);
 	}
 }
+

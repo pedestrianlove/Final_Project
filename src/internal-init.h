@@ -6,6 +6,25 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 
+typedef struct point {
+	int x;
+	int y;
+}point;
+
+
+typedef struct object {
+	ALLEGRO_BITMAP* AVATAR;
+	point POSITION;
+	int HP;
+}object;
+object* init_object (int hp, point position)
+{
+	object* new = malloc (sizeof(object));
+	new -> HP = hp;
+	new -> POSITION = position;
+
+	return new;
+}
 
 // internal
 
