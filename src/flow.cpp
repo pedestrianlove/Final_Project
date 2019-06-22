@@ -1,11 +1,15 @@
 #include "flow.h"
-#include "internal-error.h"
+#include "internal-event.h"
+#include "internal-init.h"
+#include "internal-load.h"
+
 
 void game_init(handle* GAME) {
-	exception (al_init(), 
-			"System initialization failed.", GAME);
-	init_audio (GAME);
-	init_display (GAME); 
+	init_allegro_system ();	
+	init_audio ();
+	init_display (GAME->WIDTH, GAME->HEIGHT, GAME->TITLE
+			GAME->EVENT_QUEUE, GAME->DISPLAY); 
+	init_keyboard (GAME->EVENT_QUEUE);
 
        	al_init_image_addon();
     	al_init_font_addon();
@@ -13,65 +17,22 @@ void game_init(handle* GAME) {
 
     	// Register event
 }
-void init_audio (handle* GAME)
-{
-	exception (al_install_audio(), 
-			"Failed to initialize audio!", GAME);
-	exception (al_init_acodec_addon(), 
-			"Failed to initialize audio codecs!", GAME);
-	exception (al_reserve_samples(1), 
-			"Failed to reserve samples!", GAME);
-	al_install_audio();
-    	al_init_acodec_addon();
-}
-void init_display (handle* GAME)
-{
-	// Create display
-    	GAME -> DISPLAY = al_create_display(GAME->WIDTH, GAME->HEIGHT);
-    	GAME -> EVENT_QUEUE = al_create_event_queue();
-    	exception (GAME->DISPLAY != NULL && GAME->EVENT_QUEUE != NULL, 
-			"Failed to initialize the display!", GAME); 
-    	al_set_window_position(GAME->DISPLAY, 0, 0);
-    	al_set_window_title(GAME->DISPLAY, GAME->TITLE);
-	al_register_event_source(GAME->EVENT_QUEUE, al_get_display_event_source(GAME->DISPLAY));
-}
-void init_keyboard (handle* GAME)
-{
-    	al_init_primitives_addon();
-    	al_install_keyboard();
-	al_register_event_source(GAME->EVENT_QUEUE, al_get_keyboard_event_source());
-}
 
 
 
 void game_begin(handle* GAME) {
-	GAME -> SONG = al_load_sample("res/sounds/hello.wav");
-    	exception (GAME->SONG != NULL, "Audio clip sample not loaded!", GAME);
-	al_play_sample(GAME->SONG, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
-    
-    	al_clear_to_color(al_map_rgb(100, 100, 100));
-    
-    	GAME -> FONT = al_load_ttf_font("res/fonts/pirulen.ttf",14,0);
-    	int text_width = GAME -> WIDTH /2;
-	int text_height = GAME -> HEIGHT/2 + 220;
-
-	al_draw_text(GAME->FONT, 
-			al_map_rgb(255,255,255), text_width, text_height, 
-			ALLEGRO_ALIGN_CENTRE, "Press 'Enter' to start"); 
-	al_draw_rectangle(text_width-150, 510, text_width+150, 550, 
-			al_map_rgb(255, 255, 255), 0);
-    
+	load_song (GAME->SONG, "res/sounds/hello.wav");    
+    	load_text (GAME->FONT, GAME->WIDTH, GAME->HEIGHT);    
 	al_flip_display();
 }
-
 
 
 int game_run(handle* GAME) {
     	int error = 0;
     	// First window(Menu)
 	if(window == 1){
-		if (!al_is_event_queue_empty(event_queue)) {
-            		error = process_event();
+		if (!al_is_event_queue_empty(GAME->EVENT_QUEUE)) {
+            		error = process_event(GAME->EVENT_QUEUE);
             		if(judge_next_window) {
                			window = 2;
                 		// Setting Character
@@ -134,9 +95,4 @@ void game_destroy (handle* GAME) {
 
 
 
-void exception (int val, char* str, handle* GAME) {
-	if (!val) {
-		show_err_msg("Initialization failed.");
-		game_destroy (GAME);
-	}
-}
+

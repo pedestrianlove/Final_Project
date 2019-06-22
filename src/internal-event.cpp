@@ -1,9 +1,9 @@
 #include "internal-event.h"
 
-int process_event (handle* GAME){
+int process_event (ALLEGRO_EVENT_QUEUE* EVENT_QUEUE){
 	// Request the event
 	ALLEGRO_EVENT* event = malloc (sizeof(ALLEGRO_EVENT));
-	al_wait_for_event (GAME->EVENT_QUEUE, event);
+	al_wait_for_event (EVENT_QUEUE, event);
 
 	timers_events (event);	
     	if (keyboard_events (event)) { 
@@ -63,7 +63,7 @@ int keyboard_events (ALLEGRO_EVENT* event)
     	}
 
     	// Shutdown our program
-    	else if(event.type == ALLEGRO_EVENT_DISPLAY_CLOSE)
+    	else if(event->type == ALLEGRO_EVENT_DISPLAY_CLOSE)
         	return GAME_TERMINATE;
 
 	return 0;
