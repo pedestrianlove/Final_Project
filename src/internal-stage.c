@@ -1,9 +1,11 @@
 #include "internal-stage.h"
 
 
-stage* load_stage (int number)
+stage* load_stage (int number, ALLEGRO_DISPLAY* display)
 {
 	stage* new_stage = init_stage (number);	
+	
+	al_resize_display (display, new_stage->WIDTH, new_stage->HEIGHT);
 
 	draw_object (new_stage -> BACKGROUND);
 	for (int i = 0; i < number; i++)

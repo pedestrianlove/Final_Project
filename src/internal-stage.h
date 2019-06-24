@@ -21,6 +21,6 @@ object* load_background (char*);
 ALLEGRO_SAMPLE* load_music (char*);
 
 // interface
-stage* load_stage (int);
+stage* load_stage (int, ALLEGRO_DISPLAY*);
 void destroy_stage (stage*);
 stage* init_stage (int);
