@@ -9,8 +9,8 @@ int init_system ()
 
 int init_audio ()
 {
-	return al_install_audio () ||
-		al_init_acodec_addon () ||
+	return al_install_audio () &&
+		al_init_acodec_addon () &&
 		al_reserve_samples (1);
 }
 

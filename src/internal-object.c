@@ -41,6 +41,7 @@ void draw_object (object* obj)
 
 void destroy_object (object* obj)
 {
+	al_unlock_bitmap (obj -> PIC);
 	al_destroy_bitmap (obj -> PIC);
 	free (obj);
 }
@@ -50,7 +51,7 @@ void destroy_object (object* obj)
 void refresh_display ()
 {
 	al_flip_display ();
-
+	clear_to_color (WHITE);
 }
 
 

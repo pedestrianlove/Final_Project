@@ -40,10 +40,13 @@ int game_page (control* GAME)
 {
 	// requires a external function to load stage FIXME
 	// itself should process the movement of Reddie
-	load_stage (0);
+	stage* current_stage = load_stage (0);
+	al_resize_display (GAME->display, current_stage->WIDTH, current_stage->HEIGHT);
 	refresh_display ();
 	title_event_handler (GAME->event_queue, GAME->display);
 
+	refresh_display ();
+	//destroy_stage (current_stage);
 	return EXIT_PAGE;
 }
 
