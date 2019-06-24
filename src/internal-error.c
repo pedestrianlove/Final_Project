@@ -45,6 +45,7 @@ handle* init_handle ()
 	GAME -> WIDTH = 1024;
 	GAME -> HEIGHT = 768;
 	GAME -> CONTINUE = 1;
+	GAME -> PAGE = 0;
 	GAME -> FPS = 60;
 	GAME -> EVENT_QUEUE = NULL;
 	GAME -> DISPLAY = NULL;
