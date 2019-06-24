@@ -32,7 +32,7 @@ int title_page (control* GAME)
 int about_page (control* GAME)
 {
 	// show details of development and my number FIXME
-	return settings_page;
+	return SETTINGS_PAGE;
 }
 
 
@@ -40,10 +40,9 @@ int game_page (control* GAME)
 {
 	// requires a external function to load stage FIXME
 	// itself should process the movement of Reddie
-	point position = {0,0};
-	object* BACKGROUND = init_object (AL_BACKGROUND, position, "res/images/stage1.jpeg");
-	draw_object (BACKGROUND);
+	load_stage (0);
 	refresh_display ();
+	title_event_handler (GAME->event_queue, GAME->display);
 
 	return EXIT_PAGE;
 }

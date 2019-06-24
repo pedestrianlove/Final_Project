@@ -1,16 +1,22 @@
 #include "internal-object.h"
 
-object* init_object (object_type type, point position,  char* image_path)
+object* init_object (object_type type, point start, point end,  char* image_path, int color)
 {
 	object* new_object = malloc (sizeof(object));
 	
 	new_object -> TYPE = type;
-	new_object -> POSITION = position;
+	new_object -> start = start;
 	
-	new_object -> PIC = al_load_bitmap (image_path);
-	if (new_object -> PIC == NULL) {
-		free (new_object);
-		return NULL;
+	if (new_object->TYPE != AL_OBJECT) {
+		new_object -> PIC = al_load_bitmap (image_path);
+		if (new_object -> PIC == NULL) {
+			free (new_object);
+			return NULL;
+		}
+	}
+	else {
+		new_object -> end = end;
+		new_object -> color = COLOR (color);
 	}
 
 	return new_object;
@@ -18,7 +24,18 @@ object* init_object (object_type type, point position,  char* image_path)
 
 void draw_object (object* obj)
 {
-	al_draw_bitmap (obj->PIC, obj->POSITION.x, obj->POSITION.y, 0);	
+	if (obj == NULL) {
+		printf("This object no longer exists.\n");
+		return;
+	}
+
+	if (obj->TYPE != AL_OBJECT) {
+		al_draw_bitmap (obj->PIC, obj->start.x, obj->start.y, 0);	
+	}
+	else {
+		al_draw_rectangle(obj->start.x, obj->start.y, obj->end.x, obj->end.y, obj->color, 0);
+	}
+
 }
 
 
