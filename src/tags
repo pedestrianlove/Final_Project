@@ -1,0 +1,111 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/3fdf28bc/
+<Plug>NetrwBrowseX	work.vim	/^nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_g/;"	m
+<Plug>NetrwBrowseXVis	work.vim	/^vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()$/;"	m
+ABOUT_PAGE	internal-event.h	/^	ABOUT_PAGE,$/;"	e	enum:PAGE
+AL_BACKGROUND	internal-object.h	/^	AL_BACKGROUND,$/;"	e	enum:object_type
+AL_CHARACTER	internal-object.h	/^	AL_CHARACTER,$/;"	e	enum:object_type
+AL_OBJECT	internal-object.h	/^	AL_OBJECT$/;"	e	enum:object_type
+BLACK	internal-object.h	/^	BLACK,$/;"	e	enum:color
+COLOR	internal-object.c	/^ALLEGRO_COLOR COLOR (color COLORS)$/;"	f	typeref:typename:ALLEGRO_COLOR
+CONTINUE	internal-error.h	/^	int CONTINUE;$/;"	m	struct:handle	typeref:typename:int
+DISPLAY	internal-error.h	/^	ALLEGRO_DISPLAY* DISPLAY;$/;"	m	struct:handle	typeref:typename:ALLEGRO_DISPLAY *
+ERROR	internal-error.h	/^typedef enum ERROR {$/;"	g
+ERROR	internal-error.h	/^}ERROR;$/;"	t	typeref:enum:ERROR
+ERROR_INIT_AUDIO	internal-error.h	/^	ERROR_INIT_AUDIO,$/;"	e	enum:ERROR
+ERROR_INIT_DISPLAY	internal-error.h	/^	ERROR_INIT_DISPLAY,$/;"	e	enum:ERROR
+ERROR_INIT_FONT	internal-error.h	/^	ERROR_INIT_FONT,$/;"	e	enum:ERROR
+ERROR_INIT_IMAGE	internal-error.h	/^	ERROR_INIT_IMAGE,$/;"	e	enum:ERROR
+ERROR_INIT_KEYBOARD	internal-error.h	/^	ERROR_INIT_KEYBOARD,$/;"	e	enum:ERROR
+ERROR_INIT_SYSTEM	internal-error.h	/^	ERROR_INIT_SYSTEM,$/;"	e	enum:ERROR
+ERROR_LOAD_AUDIO	internal-error.h	/^	ERROR_LOAD_AUDIO$/;"	e	enum:ERROR
+EVENT_QUEUE	internal-error.h	/^	ALLEGRO_EVENT_QUEUE* EVENT_QUEUE;$/;"	m	struct:handle	typeref:typename:ALLEGRO_EVENT_QUEUE *
+EXIT_PAGE	internal-event.h	/^	EXIT_PAGE,$/;"	e	enum:PAGE
+FPS	internal-error.h	/^	float  FPS;$/;"	m	struct:handle	typeref:typename:float
+GAME_PAGE	internal-event.h	/^	GAME_PAGE,$/;"	e	enum:PAGE
+GREY	internal-object.h	/^	GREY,$/;"	e	enum:color
+HEIGHT	internal-error.h	/^	int WIDTH, HEIGHT;$/;"	m	struct:handle	typeref:typename:int
+HEIGHT	internal-init.h	/^	int HEIGHT;$/;"	m	struct:dim	typeref:typename:int
+HELP_PAGE	internal-event.h	/^	HELP_PAGE,$/;"	e	enum:PAGE
+PAGE	internal-error.h	/^	int PAGE;$/;"	m	struct:handle	typeref:typename:int
+PAGE	internal-event.h	/^enum PAGE {$/;"	g
+PIC	internal-object.h	/^	ALLEGRO_BITMAP* PIC;$/;"	m	struct:object	typeref:typename:ALLEGRO_BITMAP *
+POSITION	internal-object.h	/^	point POSITION;$/;"	m	struct:object	typeref:typename:point
+RED	internal-object.h	/^	RED$/;"	e	enum:color
+SETTINGS_PAGE	internal-event.h	/^	SETTINGS_PAGE,$/;"	e	enum:PAGE
+SessionLoad	work.vim	/^let SessionLoad = 1$/;"	v
+TITLE	internal-error.h	/^	char* TITLE;$/;"	m	struct:handle	typeref:typename:char *
+TITLE_PAGE	internal-event.h	/^	TITLE_PAGE,$/;"	e	enum:PAGE
+TYPE	internal-object.h	/^	int TYPE;$/;"	m	struct:object	typeref:typename:int
+WHITE	internal-object.h	/^	WHITE,$/;"	e	enum:color
+WIDTH	internal-error.h	/^	int WIDTH, HEIGHT;$/;"	m	struct:handle	typeref:typename:int
+WIDTH	internal-init.h	/^	int WIDTH;$/;"	m	struct:dim	typeref:typename:int
+YELLOW	internal-object.h	/^	YELLOW,$/;"	e	enum:color
+about_page	page.c	/^int about_page (control* GAME)$/;"	f	typeref:typename:int
+check_pointer	internal-error.c	/^void check_pointer (void* ptr)$/;"	f	typeref:typename:void
+clear_to_color	internal-object.c	/^void clear_to_color (color COLOR)$/;"	f	typeref:typename:void
+color	internal-object.h	/^typedef enum color {$/;"	g
+color	internal-object.h	/^}color;$/;"	t	typeref:enum:color
+control	page.h	/^typedef struct control {$/;"	s
+control	page.h	/^}control;$/;"	t	typeref:struct:control
+destroy_handle	internal-error.c	/^void destroy_handle (handle* GAME)$/;"	f	typeref:typename:void
+destroy_object	internal-object.c	/^void destroy_object (object* obj)$/;"	f	typeref:typename:void
+dim	internal-init.h	/^typedef struct dim {$/;"	s
+dim	internal-init.h	/^}dim;$/;"	t	typeref:struct:dim
+display	page.h	/^	ALLEGRO_DISPLAY* display;$/;"	m	struct:control	typeref:typename:ALLEGRO_DISPLAY *
+draw_object	internal-object.c	/^void draw_object (object* obj)$/;"	f	typeref:typename:void
+event_queue	page.h	/^	ALLEGRO_EVENT_QUEUE* event_queue;$/;"	m	struct:control	typeref:typename:ALLEGRO_EVENT_QUEUE *
+exception	internal-error.c	/^void exception (ERROR error, handle* GAME)$/;"	f	typeref:typename:void
+exit_page	page.c	/^int exit_page (control* GAME)$/;"	f	typeref:typename:int
+game_end	flow.c	/^void game_end (handle* GAME)$/;"	f	typeref:typename:void
+game_init	flow.c	/^void game_init (handle* GAME)$/;"	f	typeref:typename:void
+game_page	page.c	/^int game_page (control* GAME)$/;"	f	typeref:typename:int
+game_run	flow.c	/^void game_run (handle* GAME)$/;"	f	typeref:typename:void
+gx	work.vim	/^nmap gx <Plug>NetrwBrowseX$/;"	m
+gx	work.vim	/^vmap gx <Plug>NetrwBrowseXVis$/;"	m
+handle	internal-error.h	/^typedef struct handle {$/;"	s
+handle	internal-error.h	/^}handle;$/;"	t	typeref:struct:handle
+help_page	page.c	/^int help_page (control* GAME)$/;"	f	typeref:typename:int
+init_audio	internal-init.c	/^int init_audio ()$/;"	f	typeref:typename:int
+init_control	page.c	/^control* init_control (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display)$/;"	f	typeref:typename:control *
+init_display	internal-init.c	/^int init_display (ALLEGRO_EVENT_QUEUE** event_queue, ALLEGRO_DISPLAY** display, $/;"	f	typeref:typename:int
+init_font	internal-init.c	/^int init_font ()$/;"	f	typeref:typename:int
+init_handle	internal-error.c	/^handle* init_handle ()$/;"	f	typeref:typename:handle *
+init_image	internal-init.c	/^int init_image ()$/;"	f	typeref:typename:int
+init_keyboard	internal-init.c	/^int init_keyboard (ALLEGRO_EVENT_QUEUE** event_queue)$/;"	f	typeref:typename:int
+init_object	internal-object.c	/^object* init_object (object_type type, point position,  char* image_path)$/;"	f	typeref:typename:object *
+init_system	internal-init.c	/^int init_system ()$/;"	f	typeref:typename:int
+load_stage	internal-stage.c	/^void load_stage (int number)$/;"	f	typeref:typename:void
+main	main.c	/^int main (int argc, char *argv[])$/;"	f	typeref:typename:int
+object	internal-object.h	/^typedef struct object {$/;"	s
+object	internal-object.h	/^}object;$/;"	t	typeref:struct:object
+object_type	internal-object.h	/^typedef enum object_type{$/;"	g
+object_type	internal-object.h	/^}object_type;$/;"	t	typeref:enum:object_type
+point	internal-object.h	/^typedef struct point {$/;"	s
+point	internal-object.h	/^}point;$/;"	t	typeref:struct:point
+refresh_display	internal-object.c	/^void refresh_display ()$/;"	f	typeref:typename:void
+s:cpo_save	work.vim	/^let s:cpo_save=&cpo$/;"	v
+s:l	work.vim	/^let s:l = 10 - ((9 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 13 - ((0 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 2 - ((1 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 21 - ((20 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 38 - ((37 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 4 - ((3 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 40 - ((27 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 48 - ((22 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 50 - ((22 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 6 - ((5 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 8 - ((7 * winheight(0) + 19) \/ 38)$/;"	v
+s:so_save	work.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:sx	work.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	work.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+settings_page	page.c	/^int settings_page (control* GAME)$/;"	f	typeref:typename:int
+title_event_handler	internal-event.c	/^int title_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display)$/;"	f	typeref:typename:int
+title_page	page.c	/^int title_page (control* GAME)$/;"	f	typeref:typename:int
+x	internal-object.h	/^	int x, y;$/;"	m	struct:point	typeref:typename:int
+y	internal-object.h	/^	int x, y;$/;"	m	struct:point	typeref:typename:int

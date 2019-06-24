@@ -60,6 +60,7 @@ void destroy_handle (handle* GAME)
 
 	free (GAME);
 	GAME = NULL;
+	al_uninstall_system ();
 }
 
 void check_pointer (void* ptr)

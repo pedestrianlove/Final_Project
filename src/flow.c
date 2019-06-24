@@ -39,9 +39,6 @@ void game_run (handle* GAME)
 			case ABOUT_PAGE:
 				GAME -> PAGE = about_page (controller);
 				break;
-			case HELP_PAGE:
-				GAME -> PAGE = help_page (controller);
-				break;
 			case GAME_PAGE:
 				GAME -> PAGE = game_page (controller);
 				break;
@@ -49,7 +46,7 @@ void game_run (handle* GAME)
 				GAME -> PAGE = settings_page (controller);
 				break;
 			case EXIT_PAGE:
-				GAME -> PAGE = game_page (controller);
+				GAME -> PAGE = exit_page (controller);
 				if (GAME->PAGE != EXIT_PAGE) {
 					GAME->PAGE = PAGE_TMP;
 					break;
