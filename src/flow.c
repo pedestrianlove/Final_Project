@@ -54,7 +54,7 @@ void game_run (handle* GAME)
 				GAME->CONTINUE = 0;
 				break;
 			default:
-				printf("The specified page is unknown.\n");
+				printf("The specified %d page is unknown.\n", GAME->PAGE);
 				GAME->CONTINUE = 0;
 				break;
 		}
