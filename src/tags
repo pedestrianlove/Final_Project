@@ -13,10 +13,13 @@ AL_CHARACTER	internal-object.h	/^	AL_CHARACTER,$/;"	e	enum:object_type
 AL_OBJECT	internal-object.h	/^	AL_OBJECT$/;"	e	enum:object_type
 BACKGROUND	internal-stage.h	/^	object* BACKGROUND;$/;"	m	struct:stage	typeref:typename:object *
 BGM	internal-stage.h	/^	ALLEGRO_SAMPLE* BGM;$/;"	m	struct:stage	typeref:typename:ALLEGRO_SAMPLE *
+BGM_INSTANCE	internal-stage.h	/^	ALLEGRO_SAMPLE_INSTANCE* BGM_INSTANCE;$/;"	m	struct:stage	typeref:typename:ALLEGRO_SAMPLE_INSTANCE *
 BLACK	internal-object.h	/^	BLACK,$/;"	e	enum:color
 COLOR	internal-object.c	/^ALLEGRO_COLOR COLOR (color COLORS)$/;"	f	typeref:typename:ALLEGRO_COLOR
 CONTINUE	internal-error.h	/^	int CONTINUE;$/;"	m	struct:handle	typeref:typename:int
+DECREASE_VOLUME	internal-event.h	/^	DECREASE_VOLUME,$/;"	e	enum:SETTINGS
 DISPLAY	internal-error.h	/^	ALLEGRO_DISPLAY* DISPLAY;$/;"	m	struct:handle	typeref:typename:ALLEGRO_DISPLAY *
+DRAW_TIMER	internal-event.h	/^	DRAW_TIMER,$/;"	e	enum:GAME_ACTION
 ERROR	internal-error.h	/^typedef enum ERROR {$/;"	g
 ERROR	internal-error.h	/^}ERROR;$/;"	t	typeref:enum:ERROR
 ERROR_INIT_AUDIO	internal-error.h	/^	ERROR_INIT_AUDIO,$/;"	e	enum:ERROR
@@ -27,24 +30,38 @@ ERROR_INIT_KEYBOARD	internal-error.h	/^	ERROR_INIT_KEYBOARD,$/;"	e	enum:ERROR
 ERROR_INIT_SYSTEM	internal-error.h	/^	ERROR_INIT_SYSTEM,$/;"	e	enum:ERROR
 ERROR_LOAD_AUDIO	internal-error.h	/^	ERROR_LOAD_AUDIO$/;"	e	enum:ERROR
 EVENT_QUEUE	internal-error.h	/^	ALLEGRO_EVENT_QUEUE* EVENT_QUEUE;$/;"	m	struct:handle	typeref:typename:ALLEGRO_EVENT_QUEUE *
+EXIT	internal-event.h	/^	EXIT,$/;"	e	enum:GAME_ACTION
+EXIT_GAME	internal-event.h	/^	EXIT_GAME,$/;"	e	enum:SETTINGS
 EXIT_PAGE	internal-event.h	/^	EXIT_PAGE,$/;"	e	enum:PAGE
+EXIT_SETTINGS	internal-event.h	/^	EXIT_SETTINGS,$/;"	e	enum:SETTINGS
 FPS	internal-error.h	/^	float  FPS;$/;"	m	struct:handle	typeref:typename:float
 GAME_ACTION	internal-event.h	/^enum GAME_ACTION {$/;"	g
+GAME_ON	internal-event.h	/^	GAME_ON$/;"	e	enum:GAME_ACTION
 GAME_PAGE	internal-event.h	/^	GAME_PAGE,$/;"	e	enum:PAGE
 GREY	internal-object.h	/^	GREY,$/;"	e	enum:color
+HALF_QUIT	internal-event.h	/^	HALF_QUIT,$/;"	e	enum:PAGE
 HEIGHT	internal-error.h	/^	int WIDTH, HEIGHT;$/;"	m	struct:handle	typeref:typename:int
 HEIGHT	internal-init.h	/^	int HEIGHT;$/;"	m	struct:dim	typeref:typename:int
 HEIGHT	internal-stage.h	/^	int WIDTH, HEIGHT;$/;"	m	struct:stage	typeref:typename:int
-MOVE_BACKWARD	internal-event.h	/^	MOVE_BACKWARD,$/;"	e	enum:GAME_ACTION
-MOVE_FORWARD	internal-event.h	/^	MOVE_FORWARD,$/;"	e	enum:GAME_ACTION
-OBJECTS	internal-stage.h	/^	object** OBJECTS;$/;"	m	struct:stage	typeref:typename:object **
+INTRO_PAGE	internal-event.h	/^	INTRO_PAGE,$/;"	e	enum:PAGE
+MOUSE_X	internal-event.h	/^int MOUSE_X;$/;"	v	typeref:typename:int
+MOUSE_Y	internal-event.h	/^int MOUSE_Y;$/;"	v	typeref:typename:int
+NO_QUIT	internal-event.h	/^	NO_QUIT$/;"	e	enum:PAGE
+OBJECTS	internal-stage.h	/^	circle** OBJECTS;$/;"	m	struct:stage	typeref:typename:circle **
 OBJECT_NUMBER	internal-stage.h	/^	int OBJECT_NUMBER;$/;"	m	struct:stage	typeref:typename:int
 PAGE	internal-error.h	/^	int PAGE;$/;"	m	struct:handle	typeref:typename:int
 PAGE	internal-event.h	/^enum PAGE {$/;"	g
+PHYSICS_TIMER	internal-event.h	/^	PHYSICS_TIMER,$/;"	e	enum:GAME_ACTION
 PIC	internal-object.h	/^	ALLEGRO_BITMAP* PIC;$/;"	m	struct:object	typeref:typename:ALLEGRO_BITMAP *
+RAISE_VOLUME	internal-event.h	/^	RAISE_VOLUME,$/;"	e	enum:SETTINGS
 RED	internal-object.h	/^	RED$/;"	e	enum:color
-SETTINGS	internal-event.h	/^	SETTINGS$/;"	e	enum:GAME_ACTION
+REMAIN_SETTINGS	internal-event.h	/^	REMAIN_SETTINGS$/;"	e	enum:SETTINGS
+SETTINGS	internal-event.h	/^	SETTINGS,$/;"	e	enum:GAME_ACTION
+SETTINGS	internal-event.h	/^enum SETTINGS {$/;"	g
 SETTINGS_PAGE	internal-event.h	/^	SETTINGS_PAGE,$/;"	e	enum:PAGE
+START_DRAWING	internal-event.h	/^	START_DRAWING,$/;"	e	enum:GAME_ACTION
+START_PHYSICS	internal-event.h	/^	START_PHYSICS,$/;"	e	enum:GAME_ACTION
+STOP_DRAWING	internal-event.h	/^	STOP_DRAWING,$/;"	e	enum:GAME_ACTION
 SessionLoad	work.vim	/^let SessionLoad = 1$/;"	v
 TITLE	internal-error.h	/^	char* TITLE;$/;"	m	struct:handle	typeref:typename:char *
 TITLE_PAGE	internal-event.h	/^	TITLE_PAGE,$/;"	e	enum:PAGE
@@ -53,38 +70,58 @@ WHITE	internal-object.h	/^	WHITE,$/;"	e	enum:color
 WIDTH	internal-error.h	/^	int WIDTH, HEIGHT;$/;"	m	struct:handle	typeref:typename:int
 WIDTH	internal-init.h	/^	int WIDTH;$/;"	m	struct:dim	typeref:typename:int
 WIDTH	internal-stage.h	/^	int WIDTH, HEIGHT;$/;"	m	struct:stage	typeref:typename:int
+WIN	internal-event.h	/^	WIN,$/;"	e	enum:GAME_ACTION
 YELLOW	internal-object.h	/^	YELLOW,$/;"	e	enum:color
+about_event_handler	internal-event.c	/^int about_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display)$/;"	f	typeref:typename:int
 about_page	page.c	/^int about_page (control* GAME)$/;"	f	typeref:typename:int
 check_pointer	internal-error.c	/^void check_pointer (void* ptr)$/;"	f	typeref:typename:void
+check_position	internal-event.c	/^int check_position (region** button_list, int list_length, ALLEGRO_MOUSE_STATE* mouse_state)$/;"	f	typeref:typename:int
+circle	internal-physics.h	/^typedef struct circle {$/;"	s
+circle	internal-physics.h	/^}circle;$/;"	t	typeref:struct:circle
 clear_to_color	internal-object.c	/^void clear_to_color (color COLOR)$/;"	f	typeref:typename:void
+collision	internal-physics.c	/^void collision (circle* Reddie, circle* fixed)$/;"	f	typeref:typename:void
 color	internal-object.h	/^	ALLEGRO_COLOR color;$/;"	m	struct:object	typeref:typename:ALLEGRO_COLOR
 color	internal-object.h	/^typedef enum color {$/;"	g
 color	internal-object.h	/^}color;$/;"	t	typeref:enum:color
 control	page.h	/^typedef struct control {$/;"	s
 control	page.h	/^}control;$/;"	t	typeref:struct:control
+create_button	internal-event.c	/^region* create_button (float start_x, float start_y, $/;"	f	typeref:typename:region *
+decrease_volume	internal-music.c	/^void decrease_volume (ALLEGRO_SAMPLE_INSTANCE* BGM)$/;"	f	typeref:typename:void
+destroy_circles	internal-object.c	/^void destroy_circles (circle* obj)$/;"	f	typeref:typename:void
 destroy_handle	internal-error.c	/^void destroy_handle (handle* GAME)$/;"	f	typeref:typename:void
 destroy_object	internal-object.c	/^void destroy_object (object* obj)$/;"	f	typeref:typename:void
 destroy_stage	internal-stage.c	/^void destroy_stage (stage* STAGE)$/;"	f	typeref:typename:void
 dim	internal-init.h	/^typedef struct dim {$/;"	s
 dim	internal-init.h	/^}dim;$/;"	t	typeref:struct:dim
 display	page.h	/^	ALLEGRO_DISPLAY* display;$/;"	m	struct:control	typeref:typename:ALLEGRO_DISPLAY *
+draw_circle	internal-object.c	/^void draw_circle (circle* obj)$/;"	f	typeref:typename:void
 draw_object	internal-object.c	/^void draw_object (object* obj)$/;"	f	typeref:typename:void
 end	internal-object.h	/^	point end;$/;"	m	struct:object	typeref:typename:point
+end_state	page.h	/^	ALLEGRO_STATE* end_state;$/;"	m	struct:control	typeref:typename:ALLEGRO_STATE *
+end_x	internal-event.h	/^	float end_x, end_y;$/;"	m	struct:region	typeref:typename:float
+end_y	internal-event.h	/^	float end_x, end_y;$/;"	m	struct:region	typeref:typename:float
 event_queue	page.h	/^	ALLEGRO_EVENT_QUEUE* event_queue;$/;"	m	struct:control	typeref:typename:ALLEGRO_EVENT_QUEUE *
 exception	internal-error.c	/^void exception (ERROR error, handle* GAME)$/;"	f	typeref:typename:void
+exit_event_handler	internal-event.c	/^int exit_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display, $/;"	f	typeref:typename:int
 exit_page	page.c	/^int exit_page (control* GAME)$/;"	f	typeref:typename:int
 find_stage_path	internal-stage.c	/^char* find_stage_path (int index)$/;"	f	typeref:typename:char *
+friction_Reddie	internal-physics.c	/^void friction_Reddie (circle* Reddie)$/;"	f	typeref:typename:void
 game_end	flow.c	/^void game_end (handle* GAME)$/;"	f	typeref:typename:void
-game_event_handler	internal-event.c	/^int game_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display)$/;"	f	typeref:typename:int
+game_event_handler	internal-event.c	/^int game_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display, $/;"	f	typeref:typename:int
 game_init	flow.c	/^void game_init (handle* GAME)$/;"	f	typeref:typename:void
 game_page	page.c	/^int game_page (control* GAME)$/;"	f	typeref:typename:int
 game_run	flow.c	/^void game_run (handle* GAME)$/;"	f	typeref:typename:void
+game_state	page.h	/^	ALLEGRO_STATE* game_state;$/;"	m	struct:control	typeref:typename:ALLEGRO_STATE *
+gravitation	internal-physics.h	/^	double gravitation;$/;"	m	struct:circle	typeref:typename:double
+gravitation_Reddie	internal-physics.c	/^void gravitation_Reddie (circle* Reddie)$/;"	f	typeref:typename:void
 gx	work.vim	/^nmap gx <Plug>NetrwBrowseX$/;"	m
 gx	work.vim	/^vmap gx <Plug>NetrwBrowseXVis$/;"	m
 handle	internal-error.h	/^typedef struct handle {$/;"	s
 handle	internal-error.h	/^}handle;$/;"	t	typeref:struct:handle
 index	internal-stage.h	/^	int index;$/;"	m	struct:stage	typeref:typename:int
+init_Reddie	internal-physics.c	/^circle* init_Reddie ()$/;"	f	typeref:typename:circle *
 init_audio	internal-init.c	/^int init_audio ()$/;"	f	typeref:typename:int
+init_circle	internal-object.c	/^circle* init_circle (point center, double radius)$/;"	f	typeref:typename:circle *
 init_control	page.c	/^control* init_control (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display)$/;"	f	typeref:typename:control *
 init_display	internal-init.c	/^int init_display (ALLEGRO_EVENT_QUEUE** event_queue, ALLEGRO_DISPLAY** display, $/;"	f	typeref:typename:int
 init_font	internal-init.c	/^int init_font ()$/;"	f	typeref:typename:int
@@ -92,41 +129,72 @@ init_handle	internal-error.c	/^handle* init_handle ()$/;"	f	typeref:typename:han
 init_image	internal-init.c	/^int init_image ()$/;"	f	typeref:typename:int
 init_keyboard	internal-init.c	/^int init_keyboard (ALLEGRO_EVENT_QUEUE** event_queue)$/;"	f	typeref:typename:int
 init_object	internal-object.c	/^object* init_object (object_type type, point start, point end,  char* image_path, int color)$/;"	f	typeref:typename:object *
-init_stage	internal-stage.c	/^stage* init_stage (int index) {$/;"	f	typeref:typename:stage *
+init_stage	internal-stage.c	/^stage* init_stage (int index) $/;"	f	typeref:typename:stage *
 init_system	internal-init.c	/^int init_system ()$/;"	f	typeref:typename:int
+inner_product	internal-physics.c	/^double inner_product (vector a, vector b)$/;"	f	typeref:typename:double
+intro_page	page.c	/^int intro_page (control* GAME)$/;"	f	typeref:typename:int
 load_background	internal-stage.c	/^object* load_background (char* bg_path)$/;"	f	typeref:typename:object *
 load_music	internal-stage.c	/^ALLEGRO_SAMPLE* load_music (char* bgm_path)$/;"	f	typeref:typename:ALLEGRO_SAMPLE *
-load_objects	internal-stage.c	/^object** load_objects (FILE* file, int number)$/;"	f	typeref:typename:object **
+load_objects	internal-stage.c	/^circle** load_objects (FILE* file, int number)$/;"	f	typeref:typename:circle **
 load_stage	internal-stage.c	/^stage* load_stage (int number, ALLEGRO_DISPLAY* display)$/;"	f	typeref:typename:stage *
 main	main.c	/^int main (int argc, char *argv[])$/;"	f	typeref:typename:int
+move_object	internal-object.c	/^void move_object (circle* obj)$/;"	f	typeref:typename:void
 object	internal-object.h	/^typedef struct object {$/;"	s
 object	internal-object.h	/^}object;$/;"	t	typeref:struct:object
 object_type	internal-object.h	/^typedef enum object_type{$/;"	g
 object_type	internal-object.h	/^}object_type;$/;"	t	typeref:enum:object_type
+play_sample_instance	internal-music.c	/^void play_sample_instance (ALLEGRO_SAMPLE_INSTANCE* BGM)$/;"	f	typeref:typename:void
 point	internal-object.h	/^typedef struct point {$/;"	s
 point	internal-object.h	/^}point;$/;"	t	typeref:struct:point
+radius	internal-physics.h	/^	double radius;$/;"	m	struct:circle	typeref:typename:double
+raise_volume	internal-music.c	/^void raise_volume (ALLEGRO_SAMPLE_INSTANCE* BGM)$/;"	f	typeref:typename:void
 refresh_display	internal-object.c	/^void refresh_display ()$/;"	f	typeref:typename:void
+region	internal-event.h	/^typedef struct region {$/;"	s
+region	internal-event.h	/^}region;$/;"	t	typeref:struct:region
+restore_stage	internal-stage.c	/^void restore_stage (stage* STAGE)$/;"	f	typeref:typename:void
 s:cpo_save	work.vim	/^let s:cpo_save=&cpo$/;"	v
+s:l	work.vim	/^let s:l = 1 - ((0 * winheight(0) + 19) \/ 38)$/;"	v
 s:l	work.vim	/^let s:l = 10 - ((9 * winheight(0) + 19) \/ 38)$/;"	v
-s:l	work.vim	/^let s:l = 13 - ((0 * winheight(0) + 19) \/ 38)$/;"	v
-s:l	work.vim	/^let s:l = 2 - ((1 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 118 - ((15 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 20 - ((19 * winheight(0) + 19) \/ 38)$/;"	v
 s:l	work.vim	/^let s:l = 21 - ((20 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 23 - ((22 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 26 - ((25 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 28 - ((27 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 38 - ((22 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 38 - ((25 * winheight(0) + 19) \/ 38)$/;"	v
 s:l	work.vim	/^let s:l = 38 - ((37 * winheight(0) + 19) \/ 38)$/;"	v
-s:l	work.vim	/^let s:l = 4 - ((3 * winheight(0) + 19) \/ 38)$/;"	v
-s:l	work.vim	/^let s:l = 40 - ((27 * winheight(0) + 19) \/ 38)$/;"	v
-s:l	work.vim	/^let s:l = 48 - ((22 * winheight(0) + 19) \/ 38)$/;"	v
-s:l	work.vim	/^let s:l = 50 - ((22 * winheight(0) + 19) \/ 38)$/;"	v
-s:l	work.vim	/^let s:l = 6 - ((5 * winheight(0) + 19) \/ 38)$/;"	v
-s:l	work.vim	/^let s:l = 8 - ((7 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 4 - ((0 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 45 - ((17 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 46 - ((21 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 52 - ((0 * winheight(0) + 19) \/ 38)$/;"	v
+s:l	work.vim	/^let s:l = 82 - ((18 * winheight(0) + 19) \/ 38)$/;"	v
 s:so_save	work.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
 s:sx	work.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
 s:wipebuf	work.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
-settings_event_handler	internal-event.c	/^int settings_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display)$/;"	f	typeref:typename:int
-settings_page	page.c	/^int settings_page (control* GAME) \/\/ help_page is integrated into this page$/;"	f	typeref:typename:int
+scalar_multiplication	internal-physics.c	/^vector scalar_multiplication (vector a, double c)$/;"	f	typeref:typename:vector
+settings_event_handler	internal-event.c	/^int settings_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display,$/;"	f	typeref:typename:int
+settings_page	page.c	/^int settings_page (control* GAME)$/;"	f	typeref:typename:int
+settings_state	page.h	/^	ALLEGRO_STATE* settings_state;$/;"	m	struct:control	typeref:typename:ALLEGRO_STATE *
 stage	internal-stage.h	/^typedef struct stage {$/;"	s
 stage	internal-stage.h	/^}stage;$/;"	t	typeref:struct:stage
+stage	page.h	/^	int stage;$/;"	m	struct:control	typeref:typename:int
 start	internal-object.h	/^	point start;$/;"	m	struct:object	typeref:typename:point
-title_event_handler	internal-event.c	/^int title_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display)$/;"	f	typeref:typename:int
+start_bgm_instance	internal-music.c	/^ALLEGRO_SAMPLE_INSTANCE* start_bgm_instance (ALLEGRO_SAMPLE* song)$/;"	f	typeref:typename:ALLEGRO_SAMPLE_INSTANCE *
+start_x	internal-event.h	/^	float start_x, start_y;$/;"	m	struct:region	typeref:typename:float
+start_y	internal-event.h	/^	float start_x, start_y;$/;"	m	struct:region	typeref:typename:float
+stop_sample_instance	internal-music.c	/^void stop_sample_instance (ALLEGRO_SAMPLE_INSTANCE* BGM)$/;"	f	typeref:typename:void
+title_event_handler	internal-event.c	/^int title_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display, $/;"	f	typeref:typename:int
 title_page	page.c	/^int title_page (control* GAME)$/;"	f	typeref:typename:int
-x	internal-object.h	/^	int x, y;$/;"	m	struct:point	typeref:typename:int
-y	internal-object.h	/^	int x, y;$/;"	m	struct:point	typeref:typename:int
+vector	internal-physics.h	/^typedef struct vector {$/;"	s
+vector	internal-physics.h	/^}vector;$/;"	t	typeref:struct:vector
+vector_length_square	internal-physics.c	/^double vector_length_square (vector a)$/;"	f	typeref:typename:double
+vector_sum	internal-physics.c	/^vector vector_sum (vector a, vector b)$/;"	f	typeref:typename:vector
+velocity	internal-physics.h	/^	vector velocity;$/;"	m	struct:circle	typeref:typename:vector
+will_collide	internal-physics.c	/^int will_collide (circle* a, circle* b)$/;"	f	typeref:typename:int
+x	internal-object.h	/^	double x, y;$/;"	m	struct:point	typeref:typename:double
+x	internal-physics.h	/^	double x, y;$/;"	m	struct:circle	typeref:typename:double
+x	internal-physics.h	/^	double x, y;$/;"	m	struct:vector	typeref:typename:double
+y	internal-object.h	/^	double x, y;$/;"	m	struct:point	typeref:typename:double
+y	internal-physics.h	/^	double x, y;$/;"	m	struct:circle	typeref:typename:double
+y	internal-physics.h	/^	double x, y;$/;"	m	struct:vector	typeref:typename:double
