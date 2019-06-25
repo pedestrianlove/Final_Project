@@ -6,7 +6,9 @@ typedef struct control {
 	ALLEGRO_EVENT_QUEUE* event_queue;
 	ALLEGRO_DISPLAY* display;
 	ALLEGRO_STATE* game_state;
+	ALLEGRO_STATE* settings_state;
 	ALLEGRO_STATE* end_state;
+	int stage;
 }control;
 control* init_control (ALLEGRO_EVENT_QUEUE*, ALLEGRO_DISPLAY*);
 

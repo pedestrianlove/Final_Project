@@ -22,6 +22,17 @@ object* init_object (object_type type, point start, point end,  char* image_path
 	return new_object;
 }
 
+circle* init_circle (point center, double radius)
+{
+	circle* new_circle = malloc (sizeof(circle));
+
+	new_circle -> x = center.x;
+	new_circle -> y = center.y;
+	new_circle -> radius = radius;
+
+	return new_circle;
+}
+
 void draw_object (object* obj)
 {
 	if (obj == NULL) {
@@ -38,10 +49,23 @@ void draw_object (object* obj)
 
 }
 
-void move_object ()
+void draw_circle (circle* obj)
 {
+	if (obj != NULL)
+		al_draw_filled_circle (obj -> x, obj->y, obj->radius, COLOR (GREY));
 }
 
+void move_object (circle* obj)
+{
+	obj->x += obj->velocity.x;
+	obj->y += obj->velocity.y;
+}
+
+
+void destroy_circles (circle* obj)
+{
+	free (obj);
+}
 
 void destroy_object (object* obj)
 {
@@ -55,7 +79,7 @@ void destroy_object (object* obj)
 void refresh_display ()
 {
 	al_flip_display ();
-	clear_to_color (WHITE);
+	clear_to_color (BLACK);
 }
 
 

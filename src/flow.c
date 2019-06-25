@@ -21,7 +21,6 @@ void game_init (handle* GAME)
 		exception (ERROR_INIT_FONT, GAME);
 	if (!init_image ())
 		exception (ERROR_INIT_IMAGE, GAME);
-	printf("Init complete\n");
 }
 
 
@@ -61,6 +60,8 @@ void game_run (handle* GAME)
 				GAME->CONTINUE = 0;
 				break;
 		}
+		if (GAME->PAGE == -1)
+			break;
 	}
 	free (controller);
 }

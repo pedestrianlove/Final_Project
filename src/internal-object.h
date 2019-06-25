@@ -4,6 +4,8 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 
+#include "internal-physics.h"
+
 typedef enum color {
 	BLACK,
 	WHITE,
@@ -19,7 +21,7 @@ typedef enum object_type{
 }object_type;
 
 typedef struct point {
-	int x, y;
+	double x, y;
 }point;
 
 
@@ -31,9 +33,13 @@ typedef struct object {
 	int TYPE;
 }object;
 
+circle* init_circle (point, double);
 object* init_object (object_type type, point start, point end, char* image_path, int color);
+void move_object (circle*);
 void draw_object (object*);
+void draw_circle (circle*);
 void destroy_object (object*);
+void destroy_circles (circle*);
 
 void refresh_display ();
 void clear_to_color (color);

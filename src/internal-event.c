@@ -51,37 +51,90 @@ int title_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* disp
 }
 
 
-int game_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display)
+int game_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display, 
+				region** button_list, int list_length, ALLEGRO_TIMER* physics, ALLEGRO_TIMER* draw)
 {
 	ALLEGRO_EVENT event;
+	ALLEGRO_MOUSE_STATE mouse_state;
 	al_wait_for_event (event_queue, &event);
 
 	switch (event.type) {
 		case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
-			#warning TODO: create a button handler!
+			al_get_mouse_state (&mouse_state);
+			printf("detected mouse button down\n");
+			if (event.mouse.button == 1) {
+				MOUSE_X = mouse_state.x;
+				MOUSE_Y = mouse_state.y;
+				return START_DRAWING;
+			}
 			break;
-		case ALLEGRO_EVENT_KEY_DOWN:
-			if (event.keyboard.keycode == ALLEGRO_KEY_ENTER)
-				return GAME_PAGE;
-			if (event.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
-				return EXIT_PAGE;
+		case ALLEGRO_EVENT_MOUSE_BUTTON_UP:
+			al_get_mouse_state (&mouse_state);
+			printf("detected mouse button up\n");
+			if (event.mouse.button == 1)
+				switch (check_position (button_list, list_length, &mouse_state)) {
+					case 0:
+						return SETTINGS;
+						break;
+					case 1:
+						return START_PHYSICS;
+						break;
+					default:
+						return STOP_DRAWING;
+						break;
+				}
+			break;
+		case ALLEGRO_EVENT_TIMER:
+			printf("detected timer event\n");
+			if (event.timer.source == physics)
+				return PHYSICS_TIMER;
+			else
+				return DRAW_TIMER;
+			break;
 		case ALLEGRO_EVENT_DISPLAY_CLOSE:
-			return EXIT_PAGE;
+			return EXIT;
 			break;
 		default:
-			return GAME_PAGE;
+			printf("HELLO\n");
+			return GAME_ON;
 			break;
 
 	}
-	return GAME_PAGE;
+	return GAME_ON;
 }
 
 
-int settings_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display)
+int settings_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* display,
+				region** button_list, int list_length)
 {
+	ALLEGRO_EVENT event;
+	ALLEGRO_MOUSE_STATE mouse_state;
+	al_wait_for_event (event_queue, &event);
+	switch (event.type) {
+		case ALLEGRO_EVENT_MOUSE_BUTTON_UP:
+			al_get_mouse_state (&mouse_state);
+			if (event.mouse.button == 1)
+				switch (check_position (button_list, list_length, &mouse_state)) {
+					case 0:
+						return RAISE_VOLUME;
+						break;
+					case 1:
+						return DECREASE_VOLUME;
+						break;
+					default:
+						break;
+				}
+		case ALLEGRO_EVENT_KEY_UP:
+			if (event.keyboard.keycode == ALLEGRO_KEY_ESCAPE)
+				return EXIT_SETTINGS;
+
+		case ALLEGRO_EVENT_DISPLAY_CLOSE:
+			return EXIT_GAME;
+	}
+
 	
 #warning TODO: settings implementation
-	return SETTINGS_PAGE;
+	return REMAIN_SETTINGS;
 }
 
 

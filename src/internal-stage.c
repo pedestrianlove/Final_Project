@@ -8,12 +8,20 @@ stage* load_stage (int number, ALLEGRO_DISPLAY* display)
 	al_resize_display (display, new_stage->WIDTH, new_stage->HEIGHT);
 	draw_object (new_stage -> BACKGROUND);
 	for (int i = 0; i < number; i++)
-		draw_object (new_stage -> OBJECTS[i]);
+		draw_circle (new_stage -> OBJECTS[i]);
 
 	new_stage -> BGM_INSTANCE = start_bgm_instance (new_stage -> BGM);
 
 	return new_stage;
 }
+
+void restore_stage (stage* STAGE)
+{
+	draw_object (STAGE -> BACKGROUND);
+	for (int i = 0; i < STAGE->OBJECT_NUMBER; i++)
+		draw_circle (STAGE -> OBJECTS[i]);
+}
+
 
 
 stage* init_stage (int index) 
@@ -48,16 +56,17 @@ stage* init_stage (int index)
 	
 	return new_stage;
 }
-object** load_objects (FILE* file, int number)
+circle** load_objects (FILE* file, int number)
 {
-	object** LIST = malloc (sizeof(object*) * number);
+	circle** LIST = malloc (sizeof(circle*) * number);
 	
-	point start_pos, end_pos;
+	point pt;
+	double radius;
 	char input_tmp[100];
 	for (int i = 0; i < number; i++) {	
-		fscanf (file, "%s%s%d%d", input_tmp, input_tmp, &(start_pos.x), &(start_pos.y));
-		fscanf (file, "%s%d%d", input_tmp, &(end_pos.x), &(end_pos.y));
-		LIST[i] = init_object (AL_OBJECT, start_pos, end_pos, NULL, BLACK);
+		fscanf (file, "%s%s%lf%lf", input_tmp, input_tmp, &pt.x, &pt.y);
+		fscanf (file, "%s%lf", input_tmp, &radius);
+		LIST[i] = init_circle (pt, radius);
 	}
 
 	return LIST;
@@ -100,5 +109,5 @@ void destroy_stage (stage* STAGE)
 	refresh_display ();
 	destroy_object (STAGE -> BACKGROUND);
 	for (int i = 0; i < STAGE -> OBJECT_NUMBER; i++)
-		destroy_object (STAGE->OBJECTS[i]);
+		destroy_circles (STAGE->OBJECTS[i]);
 }

@@ -1,15 +1,6 @@
 #include <stdio.h>
 #include <allegro5/allegro.h>
 
-typedef struct velocity {
-	double x, y;
-}velocity;
-
-typedef struct circle {
-	double x, y;
-	double radius;
-	velocity speed;
-}circle;
 
 typedef struct region {
 	float start_x, start_y;
@@ -29,11 +20,28 @@ enum PAGE {
 };
 
 enum GAME_ACTION {
-	MOVE_FORWARD,
-	MOVE_BACKWARD,
+	START_PHYSICS,
+	START_DRAWING,
+	STOP_DRAWING,
+	DRAW_TIMER,
+	PHYSICS_TIMER,
 	SETTINGS,
+	WIN,
+	EXIT,
+	GAME_ON
 };
 
+enum SETTINGS {
+	RAISE_VOLUME,
+	DECREASE_VOLUME,
+	EXIT_SETTINGS,
+	EXIT_GAME,
+	REMAIN_SETTINGS
+};
+
+// global
+int MOUSE_X;
+int MOUSE_Y;
 
 // public internal
 int check_position (region**, int, ALLEGRO_MOUSE_STATE*);
@@ -43,8 +51,8 @@ int check_position (region**, int, ALLEGRO_MOUSE_STATE*);
 
 // interface
 int title_event_handler (ALLEGRO_EVENT_QUEUE*, ALLEGRO_DISPLAY*, region**, int);
-int game_event_handler (ALLEGRO_EVENT_QUEUE*, ALLEGRO_DISPLAY*);
-int settings_event_handler (ALLEGRO_EVENT_QUEUE*, ALLEGRO_DISPLAY*);
+int game_event_handler (ALLEGRO_EVENT_QUEUE*, ALLEGRO_DISPLAY*, region**, int, ALLEGRO_TIMER*, ALLEGRO_TIMER*);
+int settings_event_handler (ALLEGRO_EVENT_QUEUE*, ALLEGRO_DISPLAY*, region**, int);
 int about_event_handler (ALLEGRO_EVENT_QUEUE*, ALLEGRO_DISPLAY*);
 int exit_event_handler (ALLEGRO_EVENT_QUEUE*, ALLEGRO_DISPLAY*, region**, int);
 region* create_button (float, float, float, float);
