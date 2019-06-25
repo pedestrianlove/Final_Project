@@ -94,10 +94,6 @@ int game_event_handler (ALLEGRO_EVENT_QUEUE* event_queue, ALLEGRO_DISPLAY* displ
 		case ALLEGRO_EVENT_DISPLAY_CLOSE:
 			return EXIT;
 			break;
-		default:
-			printf("HELLO\n");
-			return GAME_ON;
-			break;
 
 	}
 	return GAME_ON;
