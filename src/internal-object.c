@@ -38,6 +38,10 @@ void draw_object (object* obj)
 
 }
 
+void move_object ()
+{
+}
+
 
 void destroy_object (object* obj)
 {

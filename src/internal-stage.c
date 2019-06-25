@@ -1,20 +1,23 @@
 #include "internal-stage.h"
-
+#include "internal-music.h"
 
 stage* load_stage (int number, ALLEGRO_DISPLAY* display)
 {
 	stage* new_stage = init_stage (number);	
 	
 	al_resize_display (display, new_stage->WIDTH, new_stage->HEIGHT);
-
 	draw_object (new_stage -> BACKGROUND);
 	for (int i = 0; i < number; i++)
 		draw_object (new_stage -> OBJECTS[i]);
+
+	new_stage -> BGM_INSTANCE = start_bgm_instance (new_stage -> BGM);
+
 	return new_stage;
 }
 
 
-stage* init_stage (int index) {
+stage* init_stage (int index) 
+{
 	stage* new_stage = malloc (sizeof(stage));
 	new_stage -> index = index;
 	
@@ -72,11 +75,10 @@ ALLEGRO_SAMPLE* load_music (char* bgm_path)
         	printf( "Audio clip sample not loaded!\n" );
         	return NULL;
     	}
-    	// This should be implemented in another file!FIXME
-	al_play_sample(song, 1.0, 0.0,1.0,ALLEGRO_PLAYMODE_LOOP,NULL);
 
 	return song;
 }
+
 
 char* find_stage_path (int index)
 {
@@ -91,9 +93,11 @@ char* find_stage_path (int index)
 	return FINAL_PATH;
 }
 
+
 void destroy_stage (stage* STAGE)
 {
-	al_stop_samples ();
+	al_detach_sample_instance (STAGE->BGM_INSTANCE);
+	refresh_display ();
 	destroy_object (STAGE -> BACKGROUND);
 	for (int i = 0; i < STAGE -> OBJECT_NUMBER; i++)
 		destroy_object (STAGE->OBJECTS[i]);

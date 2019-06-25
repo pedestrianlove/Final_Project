@@ -6,8 +6,9 @@ typedef struct stage {
 	int index;
 	int WIDTH, HEIGHT;
 	ALLEGRO_SAMPLE* BGM;
+	ALLEGRO_SAMPLE_INSTANCE* BGM_INSTANCE;
+
 	object* BACKGROUND;
-		
 	int OBJECT_NUMBER;
 	object** OBJECTS;
 }stage;

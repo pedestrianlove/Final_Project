@@ -21,6 +21,7 @@ void game_init (handle* GAME)
 		exception (ERROR_INIT_FONT, GAME);
 	if (!init_image ())
 		exception (ERROR_INIT_IMAGE, GAME);
+	printf("Init complete\n");
 }
 
 
@@ -31,10 +32,12 @@ void game_run (handle* GAME)
 	while (GAME->CONTINUE) {
 		if (GAME->PAGE != EXIT_PAGE) 
 			PAGE_TMP = GAME->PAGE;
-
 		switch (GAME->PAGE) {
 			case TITLE_PAGE:
 				GAME -> PAGE = title_page (controller);
+				break;
+			case INTRO_PAGE:
+				GAME -> PAGE = intro_page (controller);
 				break;
 			case ABOUT_PAGE:
 				GAME -> PAGE = about_page (controller);

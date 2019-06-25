@@ -38,6 +38,7 @@ int init_keyboard (ALLEGRO_EVENT_QUEUE** event_queue)
 	if (!(al_install_keyboard () && al_install_mouse ()))
 		return 0;
     	al_register_event_source (*event_queue, al_get_keyboard_event_source ());
+	al_register_event_source (*event_queue, al_get_mouse_event_source ());
 	return 1;
 }
 
